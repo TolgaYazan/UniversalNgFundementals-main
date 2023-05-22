@@ -1,0 +1,63 @@
+<p>Anasayfa</p>
+
+<!-- hidden attribute angularda display style değiştren bir directive'dir -->
+
+<p [hidden]="!visible">
+  İçerik
+</p>
+
+
+
+<!-- static attribute binding -->
+<app-block-button color="red" text="Göster/Gizle" (onClick)="showHide()"></app-block-button>
+
+<!-- dynamic attribute binding -->
+<app-block-button [color]="btnColor" text="Button2" (onClick)="btnClick()"></app-block-button>
+
+<!-- city-selector -->
+<!-- $event ile template üzerinden emit edilen value okunur -->
+<app-selector [dataSource]="cityMaps" (onSelect)="onCitySelect($event)"></app-selector>
+
+
+<!-- selectedCity : {{selectedCity}} -->
+
+<!-- *ngIf değerini true false olmasına göre ekranda görünür -->
+<ng-template #ankara>
+  Ankara başkentimiz
+</ng-template>
+<ng-template #ist>
+  Istanbul türkiyenin kalbi.
+</ng-template>
+
+
+
+<!-- if else kodları için ise bu yazım şeklini kullanıyoruz -->
+<div *ngIf="selectedCity == '34';then ist else ankara"></div>
+
+<div *ngIf="selectedCity == '35'">
+  35 izmir
+</div>
+
+<div *ngIf="selectedCity != '34'">
+  34 İstanbul
+</div>
+
+<!-- biz ilgili template doma bazmadığımız sürece angularda template içindeki kodlar görünmez. modal popup gibi yapılar için genelde tercih ederiz. -->
+
+
+<div [ngSwitch]="selectedCity">
+  <div *ngSwitchCase="'35'">
+    İzmir seçildi
+  </div>
+  <div *ngSwitchCase="'34'">
+    Istanbul seçildi.
+  </div>
+  <div *ngSwitchCase="'06'">
+    Ankara seçildi.
+  </div>
+  <div *ngSwitchDefault>
+    Seçim Yok
+  </div>
+</div>
+
+<!-- ngSwitch case ve *ngIf structural directive -->

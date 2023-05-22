@@ -1,0 +1,11 @@
+<p>Hakkımızda</p>
+
+
+<div class="card flex justify-content-center">
+  <!-- | async pipe observable veya subject tipinde değerlere tempate üzerinden subscribe olabiliriz -->
+  <p-button label="{{counterState.counterSub | async}}" icon="pi pi-check">
+
+  </p-button>
+
+  <a pButton [routerLink]="['/counters']">Sayac Sayfası</a>
+</div>

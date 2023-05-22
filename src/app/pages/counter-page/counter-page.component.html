@@ -1,0 +1,28 @@
+<a pButton [routerLink]="['/about']">Sayac Sayfası</a>
+
+<p-panel>
+  <ng-template pTemplate="header">
+    Sayac State Management Uygulama
+  </ng-template>
+  <main>
+    Sayac: {{counter}}
+
+    <!-- FormsModule -->
+    <!-- çift taraflı veri işleme yöntemi -->
+    <input pInputText (change)="onModelChange($any($event.target).value)" />
+
+    <br>
+    <input pInputText type="text" [(ngModel)]="msg" /> Message {{msg}}
+    <br>
+    <input type="checkbox" [(ngModel)]="isActive" /> IsActive {{isActive}}
+    <br>
+    <p *ngIf="isActive">
+      {{msg}}
+    </p>
+
+  </main>
+  <ng-template pTemplate="footer">
+    <button pButton (click)="onIncrement()">(+)</button>
+    <button pButton (click)="onDecrement()">(-)</button>
+  </ng-template>
+</p-panel>

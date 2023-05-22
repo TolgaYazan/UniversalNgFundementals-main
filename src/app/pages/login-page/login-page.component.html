@@ -1,0 +1,52 @@
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+  <p-panel>
+    <ng-template pTemplate="header"> <span class="text-primary font-semibold text-xl">Oturum Açma
+        Ekranı</span></ng-template>
+
+
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-envelope"></i>
+      </span>
+      <input pInputText formControlName="email" placeholder="E-posta" />
+    </div>
+
+    <small [style.color]="'red'"
+      *ngIf="loginForm.get('email')?.hasError('required') && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)">
+
+      E-Posta boş geçilemez
+    </small>
+    <br>
+
+    <small [style.color]="'red'" *ngIf="loginForm.get('email')?.hasError('email')">
+      E-Posta formatına uygun yazınız
+    </small>
+
+
+    <br>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i class="pi pi-lock"></i>
+      </span>
+      <input type="password" pPassword formControlName="password">
+
+    </div>
+
+    <small [style.color]="'red'" *ngIf="loginForm.get('password')?.hasError('pattern')">
+      1 kucuk 1 buyuk 1 karakter 1 numara yazınız
+    </small>
+
+    <small [style.color]="'red'" *ngIf="loginForm.get('password')?.hasError('required')">
+
+      Parola boş geçilemez
+    </small>
+    <small [style.color]="'red'" *ngIf="loginForm.get('password')?.hasError('minlength')">
+      Min 8 karakter olmalıdır
+    </small>
+
+
+    <ng-template pTemplate="footer">
+      <p-button type="submit" label="Giriş" styleClass="p-button-success" />
+    </ng-template>
+  </p-panel>
+</form>

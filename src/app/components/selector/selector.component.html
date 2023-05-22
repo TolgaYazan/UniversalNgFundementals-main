@@ -1,0 +1,10 @@
+<!-- angular structural directive -->
+<!-- $event özel bir event servis ilegili elemente ait değerleri yakalamamızı sağlar.  -->
+<!-- [ngStyle] attribute directive ile elemente inline style işlemleri uygulayabiliriz -->
+<select [ngStyle]="{padding:'5px', marginBottom:'10px', width:'50vw'}" (change)="select($event)">
+  <!-- gelen model göre dinamik veri üreteceğiz. -->
+  <option [value]="item.displayValue" [ngClass]="item.displayValue == selectedValue || item.selected ? 'active-item':''"
+    *ngFor="let item of dataSource">
+    {{item.displayText}}
+  </option>
+</select>
